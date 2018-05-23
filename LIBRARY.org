@@ -1,23 +1,4 @@
-* Design
-** Think outside the database
-   <https://twitter.com/steveschoger/status/997125312411570176>
-
-   #+BEGIN_QUOTE
-   Don't be afraid to "think outside the database" — your UI doesn't need to map
-   one-to-one with your data's fields and values.
-   #+END_QUOTE
-
-* Engineering
-* Tooling
-** Put tests where sources are
-   <https://twitter.com/captainsafia/status/998971250335764480>
-
-   #+BEGIN_QUOTE
-   Change your life forever by putting your test files in the same directory as
-   your source code files.
-   #+END_QUOTE
-
-* Visual
+* Design and graphics
 ** Principles of design by Dieter Rams
    <https://www.vitsoe.com/rw/about/good-design>
 
@@ -116,10 +97,41 @@
    - Zeigarnik Effect :: People remember uncompleted or interrupted tasks better
         than completed tasks.
 
-* Typography
 ** Typography vocabulary by Pablo Stanley
    <https://twitter.com/pablostanley/status/998957556721635328>
+** Think outside the database
+   <https://twitter.com/steveschoger/status/997125312411570176>
+
+   #+BEGIN_QUOTE
+   Don't be afraid to "think outside the database" — your UI doesn't need to map
+   one-to-one with your data's fields and values.
+   #+END_QUOTE
+
+* Engineering and code
+** Put tests where sources are
+   <https://twitter.com/captainsafia/status/998971250335764480>
+
+   #+BEGIN_QUOTE
+   Change your life forever by putting your test files in the same directory as
+   your source code files.
+   #+END_QUOTE
+
+* Product and business awareness
+* Documentation
+** Add atomic examples to sequential tutorials
+   <https://twitter.com/ryanflorence/status/999427816734113792>
+
+   #+BEGIN_QUOTE
+   Docs that act like a giant tutorial aren't as friendly as you might think. I
+   want to hop in on a single topic but it assumes I've read all 30 pages of
+   documentation before this one.
+
+   Sequential tutorials/guides are great, but you gotta have atomic examples of
+   an API too.
+   #+END_QUOTE
 
 * Browser performance
+** High Performance Browser Networking                                 :book:
+   <https://hpbn.co/>
+
 * Browser security
-* Technical negotiation
