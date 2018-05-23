@@ -1,0 +1,125 @@
+* Design
+** Think outside the database
+   <https://twitter.com/steveschoger/status/997125312411570176>
+
+   #+BEGIN_QUOTE
+   Don't be afraid to "think outside the database" — your UI doesn't need to map
+   one-to-one with your data's fields and values.
+   #+END_QUOTE
+
+* Engineering
+* Tooling
+** Put tests where sources are
+   <https://twitter.com/captainsafia/status/998971250335764480>
+
+   #+BEGIN_QUOTE
+   Change your life forever by putting your test files in the same directory as
+   your source code files.
+   #+END_QUOTE
+
+* Visual
+** Principles of design by Dieter Rams
+   <https://www.vitsoe.com/rw/about/good-design>
+
+   #+BEGIN_QUOTE
+   Back in the late 1970s, Dieter Rams was becoming increasingly concerned by
+   the state of the world around him: “An impenetrable confusion of forms,
+   colours and noises.”
+
+   Aware that he was a significant contributor to that world, he asked himself
+   an important question: is my design good design?
+
+   His answer is expressed in his ten principles for good design.
+   #+END_QUOTE
+
+   - Good design is innovative :: The possibilities for innovation are not, by
+        any means, exhausted. Technological development is always offering new
+        opportunities for innovative design. But innovative design always
+        develops in tandem with innovative technology, and can never be an end
+        in itself.
+   - Good design makes a product useful :: A product is bought to be used. It
+        has to satisfy certain criteria, not only functional, but also
+        psychological and aesthetic. Good design emphasises the usefulness of a
+        product whilst disregarding anything that could possibly detract from
+        it.
+   - Good design is aesthetic :: The aesthetic quality of a product is integral
+        to its usefulness because products we use every day affect our person
+        and our well-being. But only well-executed objects can be beautiful.
+   - Good design makes a product understandable :: It clarifies the product’s
+        structure. Better still, it can make the product talk. At best, it is
+        self-explanatory.
+   - Good design is unobtrusive :: Products fulfilling a purpose are like tools.
+        They are neither decorative objects nor works of art. Their design
+        should therefore be both neutral and restrained, to leave room for the
+        user’s self-expression.
+   - Good design is honest :: It does not make a product more innovative,
+        powerful or valuable than it really is. It does not attempt to
+        manipulate the consumer with promises that cannot be kept.
+   - Good design is long-lasting :: It avoids being fashionable and therefore
+        never appears antiquated. Unlike fashionable design, it lasts many years
+        – even in today’s throwaway society.
+   - Good design is thorough down to the last detail :: Nothing must be
+        arbitrary or left to chance. Care and accuracy in the design process
+        show respect towards the user.
+   - Good design is environmentally-friendly :: Design makes an important
+        contribution to the preservation of the environment. It conserves
+        resources and minimises physical and visual pollution throughout the
+        lifecycle of the product.
+   - Good design is as little design as possible :: Less, but better – because
+        it concentrates on the essential aspects, and the products are not
+        burdened with non-essentials. Back to purity, back to simplicity.
+
+** Laws of UX
+   <https://lawsofux.com/>
+
+   A collection of seventeen important things to apply in practice when you're
+   doing UX work.
+
+   - Doherty Threshold :: Productivity soars when a computer and its users
+        interact at a pace (<400ms) that ensures that neither has to wait on the
+        other.
+   - Fitts’s Law :: The time to acquire a target is a function of the distance
+                    to and size of the target.
+   - Hick’s Law :: The time it takes to make a decision increases with the
+                   number and complexity of choices.
+   - Jakob’s Law :: Users spend most of their time on other sites. This means
+                    that users prefer your site to work the same way as all the
+                    other sites they already know.
+   - Law of Common Region :: Elements tend to be perceived into groups if they
+        are sharing an area with a clearly defined boundary.
+   - Law of Prägnanz :: People will perceive and interpret ambiguous or complex
+        images as the simplest form possible, because it is the interpretation
+        that requires the least cognitive effort of us.
+   - Law of Proximity :: Objects that are near, or proximate to each other, tend
+        to be grouped together.
+   - Law of Similarity :: The human eye tends to perceive similar elements in a
+        design as a complete picture, shape, or group, even if those elements
+        are separated.
+   - Law of Uniform Connectedness :: Elements that are visually connected are
+        perceived as more related than elements with no connection.
+   - Miller’s Law :: The average person can only keep 7 (plus or minus 2) items
+                     in their working memory.
+   - Occam’s Razor :: Among competing hypotheses that predict equally well, the
+                      one with the fewest assumptions should be selected.
+   - Pareto Principle :: The Pareto principle states that, for many events,
+        roughly 80% of the effects come from 20% of the causes.
+   - Parkinson’s Law :: Any task will inflate until all of the available time is
+        spent.
+   - Serial Position Effect :: Users have a propensity to best remember the
+        first and last items in a series.
+   - Tesler’s Law :: Tesler's Law, also known as The Law of Conservation of
+                     Complexity, states that for any system there is a certain
+                     amount of complexity which cannot be reduced.
+   - Von Restorff Effect :: The Von Restorff effect, also known as The Isolation
+        Effect, predicts that when multiple similar objects are present, the one
+        that differs from the rest is most likely to be remembered.
+   - Zeigarnik Effect :: People remember uncompleted or interrupted tasks better
+        than completed tasks.
+
+* Typography
+** Typography vocabulary by Pablo Stanley
+   <https://twitter.com/pablostanley/status/998957556721635328>
+
+* Browser performance
+* Browser security
+* Technical negotiation
