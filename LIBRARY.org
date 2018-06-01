@@ -117,8 +117,7 @@
    #+END_QUOTE
 
    See more in [[Design tips by @steveschoger]].
-
-* Engineering and code
+* Engineering
 ** Put tests where sources are
    <https://twitter.com/captainsafia/status/998971250335764480>
 
@@ -127,7 +126,46 @@
    your source code files.
    #+END_QUOTE
 
-* Product and business awareness
+** CSS tips
+*** Using calc and media queries to clamp values
+    <https://fvsch.com/code/css-locks/>
+
+    #+BEGIN_QUOTE
+    A CSS lock is a Responsive Web Design technique that lets you transition
+    smoothly between two values, depending on the current viewport size, rather
+    than jump straight from one value to the other.
+    #+END_QUOTE
+
+    The article gives thorough overview of fitting the viewport width-specific
+    font size (or any other property) into minimum and maximum boundaries while
+    having it growing linearly within those boundaries.
+** Browser performance
+*** High Performance Browser Networking                                :book:
+    <https://hpbn.co/>
+** Browser security
+* Product
+* Presentation
+* Communication
+** Meetings
+*** "Reaching Peak Meeting Efficiency" by Steven Sinofsky
+    https://medium.learningbyshipping.com/reaching-peak-meeting-efficiency-f8e47c93317a
+
+    #+BEGIN_QUOTE
+    In the course of building a company the most important tool you have to
+    create a culture of shared values is communication and meetings are critical
+    to communication.
+
+    When you bring together a team of talented and diverse individuals, the only
+    way they will come to operate as a team is by spending time talking,
+    listening, and understanding the perspective individuals bring to contribute
+    to a larger whole. Unless everyone hired shares the same background and
+    experiences, there’s no way a group of people can converge to a
+    high-performance team without meeting, sharing, and learning together. No
+    amount of ping-pong, email, or shared docs can substitute for meeting.
+    #+END_QUOTE
+
+    A solid overview of meeting anti-patterns and ways to fix them. It's a long
+    read that's worth putting on repeat and re-read every couple months.
 * Documentation
 ** Add atomic examples to sequential tutorials
    <https://twitter.com/ryanflorence/status/999427816734113792>
@@ -140,9 +178,14 @@
    Sequential tutorials/guides are great, but you gotta have atomic examples of
    an API too.
    #+END_QUOTE
+* Vocabulary
+** Expressiveness
+   https://discourse.elm-lang.org/t/a-note-about-expressiveness/1286
 
-* Browser performance
-** High Performance Browser Networking                                 :book:
-   <https://hpbn.co/>
-
-* Browser security
+   #+BEGIN_QUOTE
+   It personally bugs me when people say “language X is less expressive than
+   language Y” when it is almost always more accurate to say “that would be
+   expressed differently in language X than in language Y and that makes me very
+   angry”. It feels like a cheap way to make personal preferences sound like
+   they are rooted in computer science and therefore more objective.
+   #+END_QUOTE
