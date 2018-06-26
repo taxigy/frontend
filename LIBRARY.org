@@ -341,6 +341,18 @@
     <https://hpbn.co/>
 ** Browser security
 * Product
+* Delivery
+** Manage static assets and CDN
+   The frontend is considered static because it doesn't require any computation
+   on the server side. It just gets delivered as is to the browser that
+   requested it, and then it runs there. So a common practice to arrange
+   delivery of the frontend code is to put it on CDN. As a frontend engineer,
+   you need to have solid understanding of CDN basics and hands-on experience
+   with the CDN provider of your choice. Cooperate with SRE or DevOps in your
+   team to get to know how to manage assets on the CDN manually or in an
+   automated way.
+*** TODO AWS S3
+*** TODO Azure
 * Presentation
 * Communication
 ** Meetings
