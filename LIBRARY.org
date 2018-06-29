@@ -49,7 +49,6 @@
    - Good design is as little design as possible :: Less, but better – because
         it concentrates on the essential aspects, and the products are not
         burdened with non-essentials. Back to purity, back to simplicity.
-
 ** Laws of UX
    <https://lawsofux.com/>
 
@@ -96,18 +95,24 @@
         that differs from the rest is most likely to be remembered.
    - Zeigarnik Effect :: People remember uncompleted or interrupted tasks better
         than completed tasks.
-
 ** Little UI details by @ux_grant
    <https://mobile.twitter.com/i/moments/880688233641848832>
 
    A collections of little tips from @steveschoger to improve your visual design
    skills with the little details that make a big difference
-
 ** Design tips by @steveschoger
    <https://twitter.com/i/moments/994601867987619840>
-
 ** Typography vocabulary by Pablo Stanley
    <https://twitter.com/pablostanley/status/998957556721635328>
+** Variable fonts
+*** Initial proposal for type variations
+    https://variationsguide.typenetwork.com
+*** Quick intro to variable fonts by Google :ATTACH:
+    :PROPERTIES:
+    :Attachments: Amstelvar-Alpha-example.png
+    :ID:       1A241946-18E5-463E-9520-9F360347C582
+    :END:
+    https://developers.google.com/web/fundamentals/design-and-ux/typography/variable-fonts/
 ** Think outside the database
    <https://twitter.com/steveschoger/status/997125312411570176>
 
