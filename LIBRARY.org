@@ -328,6 +328,110 @@
    your source code files.
    #+END_QUOTE
 
+** BEM
+   BEM stands for "block, element, modifier". It was invented in 2014 and has
+   been gaining popularity since then.
+
+   The core idea is to have flat CSS stylesheet. The "flat" here means that not
+   a single CSS selector in the stylesheet exceeds one classname. So it
+   transforms this:
+
+   #+BEGIN_SRC scss
+   .table {
+     // table style
+   }
+
+   .table tr {
+     // table row style
+   }
+
+   .table tr td {
+     // table cell style
+   }
+   #+END_SRC
+
+   into this:
+
+   #+BEGIN_SRC scss
+   .table {
+     // table style
+   }
+
+   .table__row {
+     // table row style
+   }
+
+   .table__cell {
+     // table cell style
+   }
+   #+END_SRC
+
+   As a result,
+
+   - applying the same class gives the same outcome (a common analogy would be
+     the concept of purity in functional programming),
+   - no way the same element can be styled differently based on their parents;
+     each element has the styles of its own, derived from the classname, and
+   - debugging and refactoring becomes linear and easy, the estimated effort
+     does not explode as the codebase grows.
+
+   The first entity is "block". The block is defined simply as a class name and
+   is given to any DOM element that is meant to be a wrapping element or a
+   container of any sort:
+
+   #+BEGIN_SRC html
+   <table class="table">
+   </table>
+   #+END_SRC
+
+   Here, "table" is the block.
+
+   The second entity is "element". It's a DOM node that is a child, but not
+   necessarily a direct one, of any block:
+
+   #+BEGIN_SRC html
+   <table class="table">
+     <tr class="table__row"></tr>
+   </table>
+   #+END_SRC
+
+   Here, "table__row" is a classname that defines an element. You can see that
+   element name is divided from the block name by two underscores. This is a
+   classic BEM syntax. You can invent your own syntax, although keep in mind
+   that once a newbie is introduced to the codebase you're developing, they may
+   know about BEM and be ready to see classic syntax but they may not easily
+   grasp your custom syntax or recognize BEM behind it. So be practical!
+
+   Now, the third and the last entity, the "modifier":
+
+   #+BEGIN_SRC html
+   <table class="table">
+     <tr class="table__row"></tr>
+     <tr class="table__row table__row--inactive"></tr>
+   </table>
+   #+END_SRC
+
+   Here, "table__row table__row--inactive" is a class list of an element "row"
+   of block "table" with modifier "inactive". Please note that a modifier isn't
+   simply a predicate string (like "disabled" in Bootstrap) but a fully
+   constructed class name that consists of the block, element and modifier
+   itself. The reason is to avoid collisions and follow the rule that no single
+   classname should be, accidentally or intentionally, applied to more than one
+   semantically distinct element in the DOM tree. So we trade verbosity for
+   lower risk of name collision here. Remember that CSS has one namespace and
+   it's global?
+
+   You may also see that modifier is listed along with the element itself. Using
+   a modifier classname without its corresponding element classname is
+   considered against the BEM convention and therefore shouldn't happen.
+
+   This was just a quick intro. Please invest your time into reading about BEM
+   and into learning BEM in practice. It's not complex at all, it's rather small
+   and very practical. Take your time to get to know tools around BEM, like the
+   bem-cn library (https://www.npmjs.com/package/bem-cn) or a BEM linter for
+   PostCSS (https://www.npmjs.com/package/postcss-bem-linter).
+
+   Read more about BEM: https://en.bem.info
 ** CSS tips
 *** Using calc and media queries to clamp values
     <https://fvsch.com/code/css-locks/>
