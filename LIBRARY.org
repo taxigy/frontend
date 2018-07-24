@@ -484,6 +484,69 @@
 
     A solid overview of meeting anti-patterns and ways to fix them. It's a long
     read that's worth putting on repeat and re-read every couple months.
+** Giving feedback on design
+*** Practical Design Critique
+    :PROPERTIES:
+    :AUTHOR: Darrin Henein
+    :PERMALINK: https://darrinhenein.com/2017/practical-design-critique
+    :END:
+    Darrin Henein wrote an amazing essay about giving and receiving feedback on
+    design, what is the difference between critique and criticism, and how
+    fidelity correlates with quality of feedback. Check it out:
+    https://darrinhenein.com/2017/practical-design-critique.
+
+    A few select quotes:
+
+    #+BEGIN_QUOTE
+    “I don’t like it.”
+
+    “Can you just make the logo a bit bigger?”
+
+    I think we can all relate to these flavors of feedback. While (possibly)
+    oversimplified examples, these embody what is meant by reactive or directive
+    feedback (respectively). This feedback can come from many places: an
+    emotional response, an adverse reaction to change, or even a misplaced
+    attempt to “contribute” to the design process. While in some cases this type
+    of feedback might be fair, or even right, they do not fit the accepted
+    definition of critique, which we’ll get into next.
+
+    A cautionary note regarding reactive or directive feedback: use your best
+    discretion when considering whether or not to incorporate this type of
+    feedback back into your work.
+    #+END_QUOTE
+
+    #+BEGIN_QUOTE
+    First and foremost, the goal of any critique session should be clear: to use
+    critical thinking to evaluate a design’s expected impact on a goal or set of
+    goals. The question on everyone’s mind should be “how well does this
+    iteration of the design do what it’s trying to do?” This should be no
+    surprise by this point. Equally worth clarifying with your team is what
+    critique is not meant to accomplish. It’s not a planning meeting—the problem
+    space and objectives/goals may be in varying degrees of stability, and
+    critique can help refine these specifics—but the time itself should not be
+    spent prioritizing or making decisions about the roadmap or feature set.
+    #+END_QUOTE
+
+    #+BEGIN_QUOTE
+    The best feedback comes from those who have the necessary context to assess
+    the expected impact the work will have against it’s goals. It’s often
+    helpful to begin each session with a quick overview of the project’s
+    objectives, priorities, and constraints. If it’s important, any relevant
+    background information or research that informed the decisions you’ve made
+    can also be useful for the audience to gain context.
+    #+END_QUOTE
+
+    #+BEGIN_QUOTE
+    Good designs have clear objectives: measurable outcomes that the design is
+    expected to accomplish. It can be helpful to discuss the goals and
+    challenges your design is trying to solve during critique.
+    #+END_QUOTE
+
+    #+BEGIN_QUOTE
+    Designers that feel good, who are confident that nothing is on fire, are
+    going to be more open to receiving the critical feedback that follows, and
+    more inclined to incorporate that feedback into their work.
+    #+END_QUOTE
 * Documentation
 ** Know Markdown
    Knowing Markdown syntax is essential for modern web engineers. It's on Slack
