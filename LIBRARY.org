@@ -485,6 +485,17 @@
     A solid overview of meeting anti-patterns and ways to fix them. It's a long
     read that's worth putting on repeat and re-read every couple months.
 * Documentation
+** Know Markdown
+   Knowing Markdown syntax is essential for modern web engineers. It's on Slack
+   and StackOverflow, on Github and Gitlab, on Ghost and Gatsby, and knowing its
+   syntax along with semantics makes you a better communicator.
+
+   A few links:
+
+   - Learn Markdown from its original reference:
+     https://daringfireball.net/projects/markdown/syntax,
+   - or from an awesome cheat-sheet:
+     https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet.
 ** Add atomic examples to sequential tutorials
    <https://twitter.com/ryanflorence/status/999427816734113792>
 
