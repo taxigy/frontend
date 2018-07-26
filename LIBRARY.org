@@ -122,6 +122,34 @@
    #+END_QUOTE
 
    See more in [[Design tips by @steveschoger]].
+* Test and demo ideas
+** Github Gist
+   The easiest way to show a piece of code is to post it as a "gist" on [[https://gist.github.com][Github
+   Gist]]. One "gist" may contain many different files and is accessible as a git
+   repo.
+
+   It's fine for sharing code snippets and drafts but it may not be useful for
+   demo purposes. When you want to demo the code right away, consider [[Codepen]].
+** Codepen
+   Make it a habit to use [[https://codepen.io][Codepen]] to sketch and demo little pieces of UI and
+   frontend engineering ideas. Getting to run at full speed with Codepen is on
+   its own a skill you need to practice.
+
+   You may still remember [[https://jsfiddle.net][JSFiddle]], too. It has similar set of features, and is
+   still online, but it doesn't have the network effect that Codepen has.
+
+   On Codepen, you may use third-party libraries. They are added as scripts (as
+   opposed to [[Codesandbox]] where dependencies are treated as NPM modules) and
+   therefore appear in global namespace. This is okay for quick and dirty
+   prototyping, when idea matters more than further maintainability of the code.
+** Codesandbox
+   [[https://codesandbox.io][Codesandbox]] is quite similar [[Codepen]]. It offers a "container" with a
+   full-blown NPM project. You can't use shell with that but you can download
+   the sources. Since it's an NPM project under the hood, you have all the
+   tooling you would normally have when making it on your own machine. This
+   solves the continuation problem at the expense of steeper learning curve.
+   Still, it's very useful to be able to do quick prototyping on Codesandbox and
+   show it effortlessly.
 * Engineering
 ** Source control
 *** Git basics
@@ -320,6 +348,8 @@
      be sure that there will be no possible merge conflicts in the next couple
      minutes until your teammate outruns you and pushes their stuff into the
      main branch.
+** Clean Javascript code
+   Check out the repo https://github.com/ryanmcdermott/clean-code-javascript.
 ** Put tests where sources are
    <https://twitter.com/captainsafia/status/998971250335764480>
 
@@ -327,7 +357,6 @@
    Change your life forever by putting your test files in the same directory as
    your source code files.
    #+END_QUOTE
-
 ** BEM
    BEM stands for "block, element, modifier". It was invented in 2014 and has
    been gaining popularity since then.
@@ -495,8 +524,6 @@
     fidelity correlates with quality of feedback. Check it out:
     https://darrinhenein.com/2017/practical-design-critique.
 
-    A few select quotes:
-
     #+BEGIN_QUOTE
     “I don’t like it.”
 
@@ -514,44 +541,12 @@
     discretion when considering whether or not to incorporate this type of
     feedback back into your work.
     #+END_QUOTE
-
-    #+BEGIN_QUOTE
-    First and foremost, the goal of any critique session should be clear: to use
-    critical thinking to evaluate a design’s expected impact on a goal or set of
-    goals. The question on everyone’s mind should be “how well does this
-    iteration of the design do what it’s trying to do?” This should be no
-    surprise by this point. Equally worth clarifying with your team is what
-    critique is not meant to accomplish. It’s not a planning meeting—the problem
-    space and objectives/goals may be in varying degrees of stability, and
-    critique can help refine these specifics—but the time itself should not be
-    spent prioritizing or making decisions about the roadmap or feature set.
-    #+END_QUOTE
-
-    #+BEGIN_QUOTE
-    The best feedback comes from those who have the necessary context to assess
-    the expected impact the work will have against it’s goals. It’s often
-    helpful to begin each session with a quick overview of the project’s
-    objectives, priorities, and constraints. If it’s important, any relevant
-    background information or research that informed the decisions you’ve made
-    can also be useful for the audience to gain context.
-    #+END_QUOTE
-
-    #+BEGIN_QUOTE
-    Good designs have clear objectives: measurable outcomes that the design is
-    expected to accomplish. It can be helpful to discuss the goals and
-    challenges your design is trying to solve during critique.
-    #+END_QUOTE
-
-    #+BEGIN_QUOTE
-    Designers that feel good, who are confident that nothing is on fire, are
-    going to be more open to receiving the critical feedback that follows, and
-    more inclined to incorporate that feedback into their work.
-    #+END_QUOTE
 * Documentation
 ** Know Markdown
    Knowing Markdown syntax is essential for modern web engineers. It's on Slack
-   and StackOverflow, on Github and Gitlab, on Ghost and Gatsby, and knowing its
-   syntax along with semantics makes you a better communicator.
+   and StackOverflow, on Github (including [[Github Gist]]) and Gitlab, on Ghost and
+   Gatsby, and knowing its syntax along with semantics makes you a better
+   communicator.
 
    A few links:
 
@@ -570,8 +565,12 @@
    Sequential tutorials/guides are great, but you gotta have atomic examples of
    an API too.
    #+END_QUOTE
+
+   [[Codepen]] is a suitable way to get embeddable pieces of code that turn into
+   actual UI in reader's browser. Embedding these pieces a reader can play
+   around with is a step towards better communication.
 * Vocabulary
-** Expressiveness
+** "This code is expressive"
    https://discourse.elm-lang.org/t/a-note-about-expressiveness/1286
 
    #+BEGIN_QUOTE
