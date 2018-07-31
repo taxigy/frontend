@@ -1,4 +1,4 @@
-* Design and graphics
+* Design
 ** Principles of design by Dieter Rams
    <https://www.vitsoe.com/rw/about/good-design>
 
@@ -104,15 +104,7 @@
    <https://twitter.com/i/moments/994601867987619840>
 ** Typography vocabulary by Pablo Stanley
    <https://twitter.com/pablostanley/status/998957556721635328>
-** Variable fonts
-*** Initial proposal for type variations
-    https://variationsguide.typenetwork.com
-*** Quick intro to variable fonts by Google :ATTACH:
-    :PROPERTIES:
-    :Attachments: Amstelvar-Alpha-example.png
-    :ID:       1A241946-18E5-463E-9520-9F360347C582
-    :END:
-    https://developers.google.com/web/fundamentals/design-and-ux/typography/variable-fonts/
+* Architecture
 ** Think outside the database
    <https://twitter.com/steveschoger/status/997125312411570176>
 
@@ -122,7 +114,299 @@
    #+END_QUOTE
 
    See more in [[Design tips by @steveschoger]].
-* Test and demo ideas
+* Editing
+** Code editors
+   If you've been in programming for long enough, you probably have settled on
+   your favorite code editor already. However, if you're just beginning your
+   journey, this topic is actually quite important because what you choose as
+   your primary code editor will impact your work style.
+
+   Most code editors support plugins and have broad communities that create
+   those.
+
+   Here, we take a look at [[Atom]], a code editor created by Github. It's
+   definitely not the most popular, but the chance you come across a fellow
+   frontend engineer who uses Atom is quite high; other likely alternatives
+   would be VS Code and Sublime Text.
+*** Atom
+    You can get Atom on [[https://atom.io][the official website]].
+
+    Once you get it running, you'll have command line tool available so you'll
+    be able to open project folders from terminal:
+
+    #+BEGIN_SRC bash
+    cd path/to/project; atom .
+    #+END_SRC
+
+    You may also want to install a couple plugins:
+
+    - [[https://atom.io/packages/prettier-atom][prettier-atom]] for [[Prettier]]
+    - [[https://atom.io/packages/linter-eslint][linter-esint]] for [[ESLint]]
+    - [[https://atom.io/packages/editorconfig][editorconfig]] for [[EditorConfig]]
+    - [[https://atom.io/packages/emmet][emmet]] for [[Type HTML faster with Emmet][Emmet]]
+
+    And you may also like to look up Atom keyboard cheat sheets to have a quick
+    overview of the most useful hotkeys.
+** EditorConfig
+* Programming
+** HTML
+*** The style of HTML code
+    Check out [[https://www.w3schools.com/html/html5_syntax.asp][the HTML5 Style Guide and Coding Conventions from W3Schools]]. It
+    provides fundamental tips on writing good HTML code.
+
+    Generally, you want to have
+
+    - Lean structure :: HTML defines structure of a document, and because
+         there is no limit on number of elements or levels of nesting, it takes
+         deliberate effort to maintain lean structure. Remember: the greater the
+         number of elements in the document tree, the slower the page runs in
+         user's browser!
+    - Semantic structure :: Back in days, it took four to six extra
+         elements in the document tree to draw rounded corners in a button.
+         These days, with all that [[CSS]] has to offer, there is no need to
+         overload the HTML with unnecessary elements that don't have semantic
+         value, that is, have /meaning for the user/, as opposed to being used
+         purely for display or changing flow of the document.
+    - Device-agnostic structure :: the HTML document has to be exactly the same
+         for all possible devices, with not a single element being hidden or
+         removed upon delivery to user's browser. It's then a matter of
+         establishing [[CSS Media Queries]] and using [[@supports]] rules to manage the
+         representation of HTML on the screen.
+*** TODO Type HTML faster with Emmet
+** CSS
+*** CSS Media Queries
+    Check out amazing article on CSS-Tricks, [[https://css-tricks.com/css-media-queries/][CSS Media Queries & Using Available
+    Space]], to learn about media queries.
+*** @supports
+    The ~@supports~ is a rule that checks whether a certain CSS property and
+    value are supported in user's browser. For example,
+
+    #+BEGIN_SRC css
+    @supports (display: grid) {
+      .2x2grid {
+        display: grid;
+        grid-template: 1fr 1fr / 1fr 1fr;
+      }
+    }
+    #+END_SRC
+
+    Check out an article on CSS Tricks about [[https://css-tricks.com/the-at-rules-of-css/#article-header-id-10][the at-rules of CSS]] that gives a
+    brief overview of all the @-rules, including ~@supports~.
+*** BEM
+    BEM stands for "block, element, modifier". It was invented in 2014 and has
+    been gaining popularity since then.
+
+    The core idea is to have flat CSS stylesheet. The "flat" here means that not
+    a single CSS selector in the stylesheet exceeds one classname. So it
+    transforms this:
+
+    #+BEGIN_SRC scss
+    .table {
+      // table style
+    }
+
+    .table tr {
+      // table row style
+    }
+
+    .table tr td {
+      // table cell style
+    }
+    #+END_SRC
+
+    into this:
+
+    #+BEGIN_SRC scss
+    .table {
+      // table style
+    }
+
+    .table__row {
+      // table row style
+    }
+
+    .table__cell {
+      // table cell style
+    }
+    #+END_SRC
+
+    As a result,
+
+    - applying the same class gives the same outcome (a common analogy would be
+      the concept of purity in functional programming),
+    - no way the same element can be styled differently based on their parents;
+      each element has the styles of its own, derived from the classname, and
+    - debugging and refactoring becomes linear and easy, the estimated effort
+      does not explode as the codebase grows.
+
+    The first entity is "block". The block is defined simply as a class name and
+    is given to any DOM element that is meant to be a wrapping element or a
+    container of any sort:
+
+    #+BEGIN_SRC html
+    <table class="table">
+    </table>
+    #+END_SRC
+
+    Here, "table" is the block.
+
+    The second entity is "element". It's a DOM node that is a child, but not
+    necessarily a direct one, of any block:
+
+    #+BEGIN_SRC html
+    <table class="table">
+      <tr class="table__row"></tr>
+    </table>
+    #+END_SRC
+
+    Here, "table__row" is a classname that defines an element. You can see that
+    element name is divided from the block name by two underscores. This is a
+    classic BEM syntax. You can invent your own syntax, although keep in mind
+    that once a newbie is introduced to the codebase you're developing, they may
+    know about BEM and be ready to see classic syntax but they may not easily
+    grasp your custom syntax or recognize BEM behind it. So be practical!
+
+    Now, the third and the last entity, the "modifier":
+
+    #+BEGIN_SRC html
+    <table class="table">
+      <tr class="table__row"></tr>
+      <tr class="table__row table__row--inactive"></tr>
+    </table>
+    #+END_SRC
+
+    Here, "table__row table__row--inactive" is a class list of an element "row"
+    of block "table" with modifier "inactive". Please note that a modifier isn't
+    simply a predicate string (like "disabled" in Bootstrap) but a fully
+    constructed class name that consists of the block, element and modifier
+    itself. The reason is to avoid collisions and follow the rule that no single
+    classname should be, accidentally or intentionally, applied to more than one
+    semantically distinct element in the DOM tree. So we trade verbosity for
+    lower risk of name collision here. Remember that CSS has one namespace and
+    it's global?
+
+    You may also see that modifier is listed along with the element itself. Using
+    a modifier classname without its corresponding element classname is
+    considered against the BEM convention and therefore shouldn't happen.
+
+    This was just a quick intro. Please invest your time into reading about BEM
+    and into learning BEM in practice. It's not complex at all, it's rather small
+    and very practical. Take your time to get to know tools around BEM, like the
+    bem-cn library (https://www.npmjs.com/package/bem-cn) or a BEM linter for
+    PostCSS (https://www.npmjs.com/package/postcss-bem-linter).
+
+    Read more about BEM: https://en.bem.info
+*** CSS Blocks
+    The [[https://github.com/linkedin/css-blocks][CSS blocks]] library brings BEM-like evolutionary improvement to the CSS.
+    Unlike BEM, which is just notation in its essence, CSS Blocks is a build tool
+    that requires the CSS written in certain syntax:
+
+    #+BEGIN_SRC css
+    :scope {
+      opacity: 0.9;
+    }
+
+    :scope[state|enabled] {
+      opacity: 1;
+    }
+    #+END_SRC
+
+    becomes
+
+    #+BEGIN_SRC css
+    .scopehash {
+      opacity: 0.9;
+    }
+
+    .scopehashenabled {
+      opacity: 1;
+    }
+    #+END_SRC
+
+    This is an interesting concept that wraps both CSS and HTML around the new
+    syntax and build pipeline. Definitely worth investing time to learn.
+*** TODO CSS-in-JS
+*** Tip: use calc and media queries to clamp values
+    <https://fvsch.com/code/css-locks/>
+
+    #+BEGIN_QUOTE
+    A CSS lock is a Responsive Web Design technique that lets you transition
+    smoothly between two values, depending on the current viewport size, rather
+    than jump straight from one value to the other.
+    #+END_QUOTE
+
+    The [[https://fvsch.com/code/css-locks/][article]] gives thorough overview of fitting the viewport width-specific
+    font size (or any other property) into minimum and maximum boundaries while
+    having it growing linearly within those boundarie
+** Javascript
+*** The style of Javascript code
+    We live in amazing times when we finally don't need to argue over the style
+    of Javascript, because it can be fully automated! Check out [[Prettier]] and
+    [[ESLint]] sections for more details.
+**** Prettier
+**** ESLint
+*** Clean Javascript code
+    Check out the repo https://github.com/ryanmcdermott/clean-code-javascript.
+*** Static type checking
+**** TODO Flow
+**** TODO TypeScript
+* Engineering
+** Source control
+*** Git
+    Git is the most popular source control system that you most likely have
+    already used. But if not, it's arguably one of the most valuable skills.
+    Check out [[https://git-scm.com/book/en/v2/Getting-Started-Git-Basics][the official tutorial on Git basics]] to learn how to use it.
+*** One feature, one commit, one pull-request
+    See [[http://medium.com/ki-labs-engineering/one-feature-branch-one-commit-4393aa0a96cd]["One feature branch, one commit"]] on KI labs Engineering blog.
+** Build step
+*** TODO Gulp
+*** TODO Webpack
+*** TODO Rollup
+** Browser assets
+*** Images
+*** Fonts
+**** Variable fonts
+***** Initial proposal for type variations
+      https://variationsguide.typenetwork.com
+***** Quick intro to variable fonts by Google                        :ATTACH:
+      :PROPERTIES:
+      :Attachments: Amstelvar-Alpha-example.png
+      :ID:       1A241946-18E5-463E-9520-9F360347C582
+      :END:
+      https://developers.google.com/web/fundamentals/design-and-ux/typography/variable-fonts/
+*** TODO Loading npm dependencies from unpkg
+** Browser performance
+*** High Performance Browser Networking                                :book:
+    <https://hpbn.co/>
+** TODO Network security
+** TODO WebSocket
+* Debugging
+** TODO Chrome DevTools
+* Infrastructure
+** CDN
+   All the code on the frontend is considered static because it doesn't require
+   any computation on the server side. It just gets delivered as is to the
+   browser that requested it, and then it runs there. So a common practice to
+   arrange delivery of the frontend code is to put it on CDN. As a frontend
+   engineer, you need to have solid understanding of CDN basics and hands-on
+   experience with the CDN provider of your choice. Cooperate with SRE or
+   DevOps in your team to get to know how to manage assets on the CDN manually
+   or in an automated way.
+*** TODO AWS S3
+*** TODO Azure
+** TODO Data storage as a service
+*** Firebase
+*** Graph.cool
+** TODO Serverless
+* Auto-testing
+** Tip: put tests where sources are
+   <https://twitter.com/captainsafia/status/998971250335764480>
+
+   #+BEGIN_QUOTE
+   Change your life forever by putting your test files in the same directory as
+   your source code files.
+   #+END_QUOTE
+* Drafting ideas
 ** Github Gist
    The easiest way to show a piece of code is to post it as a "gist" on [[https://gist.github.com][Github
    Gist]]. One "gist" may contain many different files and is accessible as a git
@@ -130,6 +414,8 @@
 
    It's fine for sharing code snippets and drafts but it may not be useful for
    demo purposes. When you want to demo the code right away, consider [[Codepen]].
+** TODO Babel REPL
+** TODO Node REPL
 ** Codepen
    Make it a habit to use [[https://codepen.io][Codepen]] to sketch and demo little pieces of UI and
    frontend engineering ideas. Getting to run at full speed with Codepen is on
@@ -150,428 +436,58 @@
    solves the continuation problem at the expense of steeper learning curve.
    Still, it's very useful to be able to do quick prototyping on Codesandbox and
    show it effortlessly.
-* Engineering
-** Source control
-*** Git basics
-    A common git workflow that teams follow is,
-
-    - there's a main branch (usually called "master"),
-    - there might be a couple more branches for specific purposes, like
-      "staging" and "demo",
-    - the actual work is done in feature branches, the naming conventions may
-      vary,
-    - delivery of the features into the main branch is done via pull-requests
-      (in Github terminology) or merge-requests (Gitlab), the merge preceded by
-      code review process.
-
-    It's then up to each team member to make sure that the changes they have
-    made in their feature branch can be merged into the main branch, or any
-    other branch that is intended to contain the changes.
-
-    A few principles to loosely follow here:
-
-    - the author is responsible for keeping their feature branch up to date with
-      the main (or any other target) branch,
-    - the author is responsible for any potential or real merge conflict
-      resolution,
-    - the author submits a pull-request and picks up reviewes
-    - a rule of thumb for a team of N people is to pick roughly log(N)+1
-      reviewers when the stakes are high, so in a team of 8 it's usually about 3
-      reviewers,
-    - the reviewers only review the code quality,
-    - the CI proves that code is valid by running a suite of automated tests
-      against it,
-    - the author makes sure that the code does what it should do, according to
-      the expectations (sometimes known as acceptance criteria),
-    - most important: the author of the pull-request makes sure that no changes
-      that weren't intended to be introduced are going to be introduced when the
-      feature branch is merged into the target branch.
-
-    The last is tricky. How this may even happen? This usually happens through a
-    series of "git merge" operations when the author merges latest changes from
-    the main branch into their feature branch. This practice is generally
-    acceptable but may cause a lot of stress when the team reaches a certain
-    size. From author's observations, this size is 8. At this point in time,
-    it's better for every team member to get to know a simple principle: one
-    feature, one commit, one pull-request.
-**** One feature, one commit, one pull-request
-     The core idea behind this principle is that we need to have one atomic
-     commit per feature. Because git allows us to change history as we wish,
-     we're going to use it.
-
-     Consider a repo. Do:
-
-     #+BEGIN_SRC bash
-     git checkout master; git pull
-     git checkout -b new-feature
-     #+END_SRC
-
-     You're now in context of the new local branch, "new-feature". It's in sync
-     with "master" branch. Meanwhile, your teammates work on their own features,
-     too, and what happens to "master" branch is out of your control.
-
-     So you work on a feature and you add a few commits:
-
-     #+BEGIN_SRC bash
-     git add src/pages; git commit -m '--wip--'
-     # a few minutes later
-     git add src/components; git commit -m '--wip-- fix stuff'
-     # an hour later
-     git commit -am '--wip-- y u no work ffs'
-     # and finally,
-     git commit -am 'add new feature'
-     #+END_SRC
-
-     Now you have four commits. Then something like this usually happens:
-
-     #+BEGIN_SRC bash
-     git commit -am 'typo fix'
-     #+END_SRC
-
-     You feel relieved and you do
-
-     #+BEGIN_SRC bash
-     git push -u origin new-feature
-     #+END_SRC
-
-     to push the branch onto remote and track it.
-
-     So you know you are five commits into the future, compared to the "master"
-     branch, and you're totally done with the feature. Time to squash it a bit.
-
-     When you are entirely sure that you added 5 commits, you can rebase on a
-     commit that came before them:
-
-     #+BEGIN_SRC bash
-     git rebase -i HEAD~5
-     #+END_SRC
-
-     You'll see your favorite text editor (or vim, if you were lazy) showing you
-     the list of commits with corresponding messages:
-
-     #+BEGIN_SRC
-     pick 8c8be6b6 --wip--
-     pick e50afbc4 --wip-- fix stuff
-     pick dcf7e2f2 --wip-- y u no work ffs
-     pick 1d270bc9 add new feature
-     pick e8417e64 typo fix
-     #+END_SRC
-
-     To squash these 5 commits into one, replace "pick" with "squash" starting
-     from the second one:
-
-     #+BEGIN_SRC
-     pick 8c8be6b6 --wip--
-     squash e50afbc4 --wip-- fix stuff
-     squash dcf7e2f2 --wip-- y u no work ffs
-     squash 1d270bc9 add new feature
-     squash e8417e64 typo fix
-     #+END_SRC
-
-     Save and exit. Git will ask you for a new commit message. Originally, it
-     will be a multi-line comment that will include all five previously added
-     commit messages. It's up to you to wipe trashy "wips" and "typo fixes" and
-     replace it with something meaningful, like "Add new feature".
-
-     After that, git will try to rebase and most likely succeed if you didn't do
-     anything other than committing (no merges from other branches into your
-     feature branch). Now you have just one commit.
-
-     If you check status, you'll see that git tells you history had diverged
-     (from remote branch), with 5 and 1 commits respectively. If you try now to
-     push these changes by running "git push", the operation will fail because
-     git won't be able to find a merge base for your newly reorganized history
-     that contains one commit. Git will try to put it on top of those five that
-     you just squashed, and fail. To solve, you need to force-push it onto
-     remote:
-
-     #+BEGIN_SRC bash
-     git push -f
-     #+END_SRC
-
-     Because you already set upstream branch before, git doesn't have a problem
-     with finding the corresponding branch on the remote. It's also chill when
-     it comes to pushing to the remote branch: the argument "-f" (or its longer
-     version, "--force") makes it suppress any warnings and overwrite the
-     history in the remote branch. So after you did that, you'll see just one
-     new commit on Github.
-
-     Isn't it lovely? Now you know how to turn many commits into one! Now it's
-     time to alter your commit in a way that its merge base is the latest commit
-     from "master" branch. To do that, you need latest changes from the target
-     branch (in this case, we assume the target branch and the main branch are
-     all the same: "master"). Check it out and pull:
-
-     #+BEGIN_SRC bash
-     git checkout master; git pull
-     #+END_SRC
-
-     Now you need to return back to the context of your feature branch:
-
-     #+BEGIN_SRC bash
-     git checkout new-feature
-     #+END_SRC
-
-     The next step is to replace the base of "new-feature" by doing
-
-     #+BEGIN_SRC bash
-     git rebase -i master
-     #+END_SRC
-
-     You'll see familiar text in your text editor of choice (or vim, if you're a
-     vim enthusiast) with the text like
-
-     #+BEGIN_SRC
-     pick 4d9b768d Add new feature
-     #+END_SRC
-
-     The main signal that things go the right way here is that you only see one
-     commit in this list. You may just close the text editor and wait until git
-     is done with rebasing your changes on "master" branch.
-
-     If there are any conflicts, you'll see a message on the terminal. In this
-     case, git provides enough guidance to continue. Generally, you want to
-     resolve conflicts and continue rebase; repeat until the rebase is
-     successfully finished. After you're done with this, don't forget to update
-     the remote branch, too:
-
-     #+BEGIN_SRC bash
-     git push -f
-     #+END_SRC
-
-     This will force-push the latest history that your local branch
-     "new-feature" has into the remote branch.
-
-     Voilà, done!
-
-     Now you can create the new pull-request, pick your favorite reviewers and
-     be sure that there will be no possible merge conflicts in the next couple
-     minutes until your teammate outruns you and pushes their stuff into the
-     main branch.
-** Clean Javascript code
-   Check out the repo https://github.com/ryanmcdermott/clean-code-javascript.
-** Put tests where sources are
-   <https://twitter.com/captainsafia/status/998971250335764480>
-
-   #+BEGIN_QUOTE
-   Change your life forever by putting your test files in the same directory as
-   your source code files.
-   #+END_QUOTE
-** BEM
-   BEM stands for "block, element, modifier". It was invented in 2014 and has
-   been gaining popularity since then.
-
-   The core idea is to have flat CSS stylesheet. The "flat" here means that not
-   a single CSS selector in the stylesheet exceeds one classname. So it
-   transforms this:
-
-   #+BEGIN_SRC scss
-   .table {
-     // table style
-   }
-
-   .table tr {
-     // table row style
-   }
-
-   .table tr td {
-     // table cell style
-   }
-   #+END_SRC
-
-   into this:
-
-   #+BEGIN_SRC scss
-   .table {
-     // table style
-   }
-
-   .table__row {
-     // table row style
-   }
-
-   .table__cell {
-     // table cell style
-   }
-   #+END_SRC
-
-   As a result,
-
-   - applying the same class gives the same outcome (a common analogy would be
-     the concept of purity in functional programming),
-   - no way the same element can be styled differently based on their parents;
-     each element has the styles of its own, derived from the classname, and
-   - debugging and refactoring becomes linear and easy, the estimated effort
-     does not explode as the codebase grows.
-
-   The first entity is "block". The block is defined simply as a class name and
-   is given to any DOM element that is meant to be a wrapping element or a
-   container of any sort:
-
-   #+BEGIN_SRC html
-   <table class="table">
-   </table>
-   #+END_SRC
-
-   Here, "table" is the block.
-
-   The second entity is "element". It's a DOM node that is a child, but not
-   necessarily a direct one, of any block:
-
-   #+BEGIN_SRC html
-   <table class="table">
-     <tr class="table__row"></tr>
-   </table>
-   #+END_SRC
-
-   Here, "table__row" is a classname that defines an element. You can see that
-   element name is divided from the block name by two underscores. This is a
-   classic BEM syntax. You can invent your own syntax, although keep in mind
-   that once a newbie is introduced to the codebase you're developing, they may
-   know about BEM and be ready to see classic syntax but they may not easily
-   grasp your custom syntax or recognize BEM behind it. So be practical!
-
-   Now, the third and the last entity, the "modifier":
-
-   #+BEGIN_SRC html
-   <table class="table">
-     <tr class="table__row"></tr>
-     <tr class="table__row table__row--inactive"></tr>
-   </table>
-   #+END_SRC
-
-   Here, "table__row table__row--inactive" is a class list of an element "row"
-   of block "table" with modifier "inactive". Please note that a modifier isn't
-   simply a predicate string (like "disabled" in Bootstrap) but a fully
-   constructed class name that consists of the block, element and modifier
-   itself. The reason is to avoid collisions and follow the rule that no single
-   classname should be, accidentally or intentionally, applied to more than one
-   semantically distinct element in the DOM tree. So we trade verbosity for
-   lower risk of name collision here. Remember that CSS has one namespace and
-   it's global?
-
-   You may also see that modifier is listed along with the element itself. Using
-   a modifier classname without its corresponding element classname is
-   considered against the BEM convention and therefore shouldn't happen.
-
-   This was just a quick intro. Please invest your time into reading about BEM
-   and into learning BEM in practice. It's not complex at all, it's rather small
-   and very practical. Take your time to get to know tools around BEM, like the
-   bem-cn library (https://www.npmjs.com/package/bem-cn) or a BEM linter for
-   PostCSS (https://www.npmjs.com/package/postcss-bem-linter).
-
-   Read more about BEM: https://en.bem.info
-** CSS Blocks
-   The [[https://github.com/linkedin/css-blocks][CSS blocks]] library brings BEM-like evolutionary improvement to the CSS.
-   Unlike BEM, which is just notation in its essence, CSS Blocks is a build tool
-   that requires the CSS written in certain syntax:
-
-   #+BEGIN_SRC css
-   :scope {
-     opacity: 0.9;
-   }
-
-   :scope[state|enabled] {
-     opacity: 1;
-   }
-   #+END_SRC
-
-   becomes
-
-   #+BEGIN_SRC css
-   .scopehash {
-     opacity: 0.9;
-   }
-
-   .scopehashenabled {
-     opacity: 1;
-   }
-   #+END_SRC
-
-   This is an interesting concept that wraps both CSS and HTML around the new
-   syntax and build pipeline. Definitely worth investing time to learn.
-** CSS tips
-*** Using calc and media queries to clamp values
-    <https://fvsch.com/code/css-locks/>
-
-    #+BEGIN_QUOTE
-    A CSS lock is a Responsive Web Design technique that lets you transition
-    smoothly between two values, depending on the current viewport size, rather
-    than jump straight from one value to the other.
-    #+END_QUOTE
-
-    The article gives thorough overview of fitting the viewport width-specific
-    font size (or any other property) into minimum and maximum boundaries while
-    having it growing linearly within those boundaries.
-** Browser performance
-*** High Performance Browser Networking                                :book:
-    <https://hpbn.co/>
-** Browser security
-* Product
-* Delivery
-** Manage static assets and CDN
-   The frontend is considered static because it doesn't require any computation
-   on the server side. It just gets delivered as is to the browser that
-   requested it, and then it runs there. So a common practice to arrange
-   delivery of the frontend code is to put it on CDN. As a frontend engineer,
-   you need to have solid understanding of CDN basics and hands-on experience
-   with the CDN provider of your choice. Cooperate with SRE or DevOps in your
-   team to get to know how to manage assets on the CDN manually or in an
-   automated way.
-*** TODO AWS S3
-*** TODO Azure
-* Presentation
-* Communication
-** Meetings
-*** "Reaching Peak Meeting Efficiency" by Steven Sinofsky
-    https://medium.learningbyshipping.com/reaching-peak-meeting-efficiency-f8e47c93317a
-
-    #+BEGIN_QUOTE
-    In the course of building a company the most important tool you have to
-    create a culture of shared values is communication and meetings are critical
-    to communication.
-
-    When you bring together a team of talented and diverse individuals, the only
-    way they will come to operate as a team is by spending time talking,
-    listening, and understanding the perspective individuals bring to contribute
-    to a larger whole. Unless everyone hired shares the same background and
-    experiences, there’s no way a group of people can converge to a
-    high-performance team without meeting, sharing, and learning together. No
-    amount of ping-pong, email, or shared docs can substitute for meeting.
-    #+END_QUOTE
-
-    A solid overview of meeting anti-patterns and ways to fix them. It's a long
-    read that's worth putting on repeat and re-read every couple months.
-** Giving feedback on design
-*** Practical Design Critique
-    :PROPERTIES:
-    :AUTHOR: Darrin Henein
-    :PERMALINK: https://darrinhenein.com/2017/practical-design-critique
-    :END:
-    Darrin Henein wrote an amazing essay about giving and receiving feedback on
-    design, what is the difference between critique and criticism, and how
-    fidelity correlates with quality of feedback. Check it out:
-    https://darrinhenein.com/2017/practical-design-critique.
-
-    #+BEGIN_QUOTE
-    “I don’t like it.”
-
-    “Can you just make the logo a bit bigger?”
-
-    I think we can all relate to these flavors of feedback. While (possibly)
-    oversimplified examples, these embody what is meant by reactive or directive
-    feedback (respectively). This feedback can come from many places: an
-    emotional response, an adverse reaction to change, or even a misplaced
-    attempt to “contribute” to the design process. While in some cases this type
-    of feedback might be fair, or even right, they do not fit the accepted
-    definition of critique, which we’ll get into next.
-
-    A cautionary note regarding reactive or directive feedback: use your best
-    discretion when considering whether or not to incorporate this type of
-    feedback back into your work.
-    #+END_QUOTE
+* People
+** Communication
+*** Meetings
+**** [#A] "Reaching Peak Meeting Efficiency" by Steven Sinofsky
+     https://medium.learningbyshipping.com/reaching-peak-meeting-efficiency-f8e47c93317a
+
+     #+BEGIN_QUOTE
+     In the course of building a company the most important tool you have to
+     create a culture of shared values is communication and meetings are critical
+     to communication.
+
+     When you bring together a team of talented and diverse individuals, the only
+     way they will come to operate as a team is by spending time talking,
+     listening, and understanding the perspective individuals bring to contribute
+     to a larger whole. Unless everyone hired shares the same background and
+     experiences, there’s no way a group of people can converge to a
+     high-performance team without meeting, sharing, and learning together. No
+     amount of ping-pong, email, or shared docs can substitute for meeting.
+     #+END_QUOTE
+
+     A solid overview of meeting anti-patterns and ways to fix them. It's a long
+     read that's worth putting on repeat and re-read every couple months.
+*** Giving feedback
+**** [#A] Practical Design Critique
+     :PROPERTIES:
+     :AUTHOR:   Darrin Henein
+     :PERMALINK: https://darrinhenein.com/2017/practical-design-critique
+     :END:
+     Darrin Henein wrote an amazing essay about giving and receiving feedback on
+     design, what is the difference between critique and criticism, and how
+     fidelity correlates with quality of feedback. Check it out:
+     https://darrinhenein.com/2017/practical-design-critique.
+
+     #+BEGIN_QUOTE
+     “I don’t like it.”
+
+     “Can you just make the logo a bit bigger?”
+
+     I think we can all relate to these flavors of feedback. While (possibly)
+     oversimplified examples, these embody what is meant by reactive or directive
+     feedback (respectively). This feedback can come from many places: an
+     emotional response, an adverse reaction to change, or even a misplaced
+     attempt to “contribute” to the design process. While in some cases this type
+     of feedback might be fair, or even right, they do not fit the accepted
+     definition of critique, which we’ll get into next.
+
+     A cautionary note regarding reactive or directive feedback: use your best
+     discretion when considering whether or not to incorporate this type of
+     feedback back into your work.
+     #+END_QUOTE
 * Documentation
-** Know Markdown
+** Markdown
    Knowing Markdown syntax is essential for modern web engineers. It's on Slack
    and StackOverflow, on Github (including [[Github Gist]]) and Gitlab, on Ghost and
    Gatsby, and knowing its syntax along with semantics makes you a better
@@ -598,14 +514,9 @@
    [[Codepen]] is a suitable way to get embeddable pieces of code that turn into
    actual UI in reader's browser. Embedding these pieces a reader can play
    around with is a step towards better communication.
-* Vocabulary
-** "This code is expressive"
-   https://discourse.elm-lang.org/t/a-note-about-expressiveness/1286
-
-   #+BEGIN_QUOTE
-   It personally bugs me when people say “language X is less expressive than
-   language Y” when it is almost always more accurate to say “that would be
-   expressed differently in language X than in language Y and that makes me very
-   angry”. It feels like a cheap way to make personal preferences sound like
-   they are rooted in computer science and therefore more objective.
-   #+END_QUOTE
+* Questions
+** TODO Quora
+** TODO StackOverflow
+** TODO Code Review Stack Exchange
+** TODO Codementor
+** TODO Open source Slack teams
