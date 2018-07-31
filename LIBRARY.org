@@ -461,6 +461,35 @@
    PostCSS (https://www.npmjs.com/package/postcss-bem-linter).
 
    Read more about BEM: https://en.bem.info
+** CSS Blocks
+   The [[https://github.com/linkedin/css-blocks][CSS blocks]] library brings BEM-like evolutionary improvement to the CSS.
+   Unlike BEM, which is just notation in its essence, CSS Blocks is a build tool
+   that requires the CSS written in certain syntax:
+
+   #+BEGIN_SRC css
+   :scope {
+     opacity: 0.9;
+   }
+
+   :scope[state|enabled] {
+     opacity: 1;
+   }
+   #+END_SRC
+
+   becomes
+
+   #+BEGIN_SRC css
+   .scopehash {
+     opacity: 0.9;
+   }
+
+   .scopehashenabled {
+     opacity: 1;
+   }
+   #+END_SRC
+
+   This is an interesting concept that wraps both CSS and HTML around the new
+   syntax and build pipeline. Definitely worth investing time to learn.
 ** CSS tips
 *** Using calc and media queries to clamp values
     <https://fvsch.com/code/css-locks/>
